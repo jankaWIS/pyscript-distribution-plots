@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--  sources  -->
+<!--  https://realpython.com/pyscript-python-in-browser/  -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plot distribution</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--    for plotly -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+    <link rel="stylesheet" href="./css/theme.css" />
+    <py-env>
+      - numpy
+      - matplotlib
+      - plotly
+      - pandas
+      - paths:
+        - src/distributions.py
+    </py-env>
+
+<!--    for plotting the plotly graph -->
+    <script type='text/javascript'>
+        function plot(graph, chart) {
+            var figure = JSON.parse(graph)
+            Plotly.newPlot(chart, figure, {});
+        }
+    </script>
+
+</head>
+<body>
+
+    <div class="title">
+        <h1>Plot distributions app</h1>
+        <p>
+            Plot distributions based on their mean (mu) and standard deviation (sigma) demo
+        </p>
+    </div>
+<!--  choose distribution  -->
+    <h2>Select distribution to be plotted</h2>
+    <div class="choice-box">
+        <div class="col-sm-2 p-2 mr-4 mb-1">
+            <select class="form-control" id="select-distribution">
+                <option value="normal">Normal distribution</option>
+                <option value="lognormal">Lognormal distribution</option>
+            </select>
+        </div>
+    <!--    place to print the choice -->
+        <div>
+            <h3>Plotting your choice:</h3>
+            <div id="selected-choice"></div>
+        </div>
+        </div>
+    <div class="choice-box">
+    <fieldset>
+        <legend>Mean</legend>
+        <input id="range1"
+          type="range" min="-1" max="1" step="0.1" value="0">
+        <label for="range1">0</label>
+    </fieldset>
+    <fieldset>
+        <legend>Standard deviation</legend>
+        <input id="range2"
+          type="range" min="0" max="2" step="0.1" value="1">
+        <label for="range2">1</label>
+        </fieldset>
+    </div>
+<!--  plots  -->
+    <h2>JS plot</h2>
+    <div class="plot">
+        <canvas id="chart"></canvas>
+    </div>
+    <h2>matplotlib plot</h2>
+    <div class="plot">
+        <div id="chart1"></div>
+    </div>
+    <h2>plotly plot</h2>
+    <div class="plot">
+        <div id="chart2"></div>
+    </div>
+
+  <py-script src="src/controls.py"></py-script>
+  <script src="src/plotting.js"></script>
+
+<!-- for debug -->
+<!--<py-repl></py-repl>-->
+
+
+
+</body>
+</html>
