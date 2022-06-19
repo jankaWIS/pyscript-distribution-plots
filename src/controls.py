@@ -88,3 +88,26 @@ select_distribution.addEventListener("change", change_proxy)
 
 # initialise the first plot
 plot_distribution()
+
+
+# Add the part with selecting and inserting specific values
+from distributions import cdf_normal
+
+
+def run(*args, **kwargs):
+    entered_mu = Element("enter-mu")
+    entered_sigma = Element("enter-sigma")
+    mu = float(entered_mu.value)
+    sigma = float(entered_sigma.value)
+    pyscript.write("entered-values", f"values: mu: {mu}, sigma: {sigma}")
+    plot_cdf(mu, sigma)
+
+
+def plot_cdf(mu, sigma):
+    x = np.linspace(0, 1, 100)
+    y = cdf_normal(x, mu, sigma)
+
+    fig, _ = plt.subplots()
+    plt.plot(x, y, linewidth=2, color='k')
+    # Element("panel").write(fig)
+    pyscript.write("plot-error", fig)

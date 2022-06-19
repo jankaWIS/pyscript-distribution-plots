@@ -3,6 +3,7 @@
 <head>
 <!--  sources  -->
 <!--  https://realpython.com/pyscript-python-in-browser/  -->
+<!--  https://github.com/pyscript/pyscript/blob/main/examples/simple_bioinformatics_tool.html  -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plot distribution</title>
@@ -18,6 +19,7 @@
       - matplotlib
       - plotly
       - pandas
+      - scipy
       - paths:
         - src/distributions.py
     </py-env>
@@ -85,8 +87,30 @@
   <py-script src="src/controls.py"></py-script>
   <script src="src/plotting.js"></script>
 
+
+<!--  form  -->
+<h2>Specify parameters using a box - plot cdf of normal distribution</h2>
+<div>
+    <div class="form-parameters">
+        <label for="enter-mu">Mean (between -10 and 10):</label>
+        <input type="number" min="-10" max="10" id="enter-mu" name="enter-mu" style="border-width: 1px">
+        <label for="enter-sigma">Standard deviation (between 0 and 10):</label>
+        <input type="number" min="0" max="10" id="enter-sigma" name="enter-sigma" style="border-width: 1px">
+<!--    TODO - figure out the run button    -->
+        <button id="run" type="button" class="button" pys-onclick="run">Plot</button>
+
+        <p>You entered:</p>
+        <div id="entered-values"></div>
+
+    </div>
+    <div id="plot-error" class="plot-cdf">
+    </div>
+</div>
+
 <!-- for debug -->
+<!--<div style="text-align: left">-->
 <!--<py-repl></py-repl>-->
+<!--</div>-->
 
 <!--  Footer  -->
 <footer class="footer">

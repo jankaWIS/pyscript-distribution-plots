@@ -57,3 +57,22 @@ h2 {
   color: #1e84f2;
   text-decoration: underline;
 }
+
+.button {
+ border-color:#dbdbdb;
+ border-width:1px;
+ background-color:#00dd11;
+ /*color:#fff;*/
+ color:#363636;
+ /*cursor:pointer;*/
+ /*justify-content:center;*/
+ padding: calc(.5em - 1px) 1em;
+ text-align:center;
+ /*white-space:nowrap;*/
+}
+
+.button:hover {
+ background-color:#00c4a7;
+ border-color:transparent;
+ color:#fff
+}

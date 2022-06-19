@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import special
 
 def normal_distribution_fx(mu, sigma):
     """
@@ -49,3 +50,7 @@ def lognormal_distribution_fx(mu, sigma):
     x = np.linspace(min(bins), max(bins), 1000)
     y = (np.exp(-(np.log(x) - mu)**2 / (2 * sigma**2)) / (x * sigma * np.sqrt(2 * np.pi)))
     return x, y
+
+
+def cdf_normal(x, mu, sigma):
+    return 0.5*(1 + special.erf((x - mu) / (sigma * np.sqrt(2))))
