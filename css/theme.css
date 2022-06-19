@@ -41,3 +41,19 @@ h2 {
     /* align-content: center; */
     justify-content: center;
 }
+
+.footer {
+    padding: 1rem 0;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.footer a {
+  color: #5a5656;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #1e84f2;
+  text-decoration: underline;
+}
